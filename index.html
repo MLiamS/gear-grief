@@ -4,7 +4,14 @@
     <meta charset="utf-8">
     <script src="build/js/vendor.min.js"></script>
     <script type="text/javascript" src="build/js/app.js"></script>
+
     <title>gear-grief</title>
+    <style>
+       #map {
+        height: 400px;
+        width: 400px;
+       }
+    </style>
   </head>
   <body>
     <form id="bike-form">
@@ -13,8 +20,25 @@
       <button type="submit">Do stuff</button>
     </form>
     <div class="output">
-      <ul id="bikes">
+      <h1>Incoming!</h1>
 
+      <div id="map"></div>
+      <script>
+        function initMap() {
+          var ptown = {lat: 45.5231, lng: -122.6765};
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 6,
+            center: ptown
+          });
+          var marker = new google.maps.Marker({
+            position: ptown,
+            map: map
+          });
+        }
+      </script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOURKEYHERE&callback=initMap"
+    type="text/javascript"></script>
+      <ul id="bikes">
       </ul>
     </div>
   </body>
